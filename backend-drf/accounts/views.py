@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .serializers import UserRegistrationSerializer, OwnProfileSerializer, OthersProfileSerializer
+from .serializers import UserRegistrationSerializer, OwnProfileSerializer
 from .models import User
 from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -28,12 +28,3 @@ class OwnProfileSettingsDeleteView(generics.DestroyAPIView):
     
     def get_object(self):
         return self.request.user
-
-
-class OthersProfileView(APIView):
-    permission_classes = [IsAuthenticated]
-    
-    def get(self, request, user_id):
-        user = get_object_or_404(User, id=user_id)
-        serializer = OthersProfileSerializer(user)
-        return Response(serializer.data)

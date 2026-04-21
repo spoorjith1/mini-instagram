@@ -1,5 +1,5 @@
 from django.urls import path
-from accounts.views import RegisterView, OwnProfileView, OwnProfileSettingsDeleteView, OthersProfileView
+from accounts.views import RegisterView, OwnProfileView, OwnProfileSettingsDeleteView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from posts.views import PostView
 
@@ -21,5 +21,4 @@ urlpatterns = [
     path('profile/me/delete', OwnProfileSettingsDeleteView.as_view(), name='delete_my_profile'),
     
     # view Others Profile
-    path('profile/<int:user_id>', OthersProfileView.as_view(), name='others_profile'),
 ]

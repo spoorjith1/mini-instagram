@@ -6,7 +6,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)
     class Meta:
         model = User
-        fields = ['email', 'username', 'first_name', 'last_name', 'mobile_number', 'password']
+        fields = ['email', 'username', 'password']
     
     def validate_email(self, value):
         if User.objects.filter(email__iexact=value).exists():
@@ -24,9 +24,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         user = User(
             email = validated_data.get('email'),
             username = validated_data.get('username'),
-            first_name = validated_data.get('first_name', ''),
-            last_name = validated_data.get('last_name', ''),
-            mobile_number = validated_data.get('mobile_number')
         )
         
         user.set_password(password)
@@ -37,7 +34,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 class OwnProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'mobile_number']
+        fields = ['profile_pic', 'username', 'first_name', 'last_name', 'email', 'mobile_number', 'date_of_birth']
         
     def validate_email(self, value):
         user = self.instance
@@ -52,9 +49,3 @@ class OwnProfileSerializer(serializers.ModelSerializer):
         if User.objects.filter(username__iexact=value).exclude(id=user.id).exists():
             raise serializers.ValidationError("Username already exists")
         return value
-
-
-class OthersProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['username', 'first_name', 'last_name']
