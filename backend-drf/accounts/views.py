@@ -7,13 +7,14 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
+
+#Own Profile
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserRegistrationSerializer
     permission_classes = [AllowAny]
-    
-    
-class OwnProfileView(generics.RetrieveUpdateAPIView):
+     
+class OwnProfileView(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = OwnProfileSerializer
     permission_classes = [IsAuthenticated]
@@ -21,6 +22,13 @@ class OwnProfileView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return self.request.user
 
+class OwnProfileEditView(generics.UpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = OwnProfileSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_object(self):
+        return self.request.user
 
 class OwnProfileSettingsDeleteView(generics.DestroyAPIView):
     queryset = User.objects.all()
@@ -28,3 +36,7 @@ class OwnProfileSettingsDeleteView(generics.DestroyAPIView):
     
     def get_object(self):
         return self.request.user
+
+
+
+#Others Profile View
