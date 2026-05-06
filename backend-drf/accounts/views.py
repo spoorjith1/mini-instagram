@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .serializers import UserRegistrationSerializer, OwnProfileSerializer
+from .serializers import UserRegistrationSerializer, OwnProfileSerializer, OwnProfileViewSerializer, OthersProfileViewSerializer
 from .models import User
 from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -13,14 +13,7 @@ class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserRegistrationSerializer
     permission_classes = [AllowAny]
-     
-class OwnProfileView(generics.RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = OwnProfileSerializer
-    permission_classes = [IsAuthenticated]
-    
-    def get_object(self):
-        return self.request.user
+
 
 class OwnProfileEditView(generics.UpdateAPIView):
     queryset = User.objects.all()
@@ -29,8 +22,13 @@ class OwnProfileEditView(generics.UpdateAPIView):
     
     def get_object(self):
         return self.request.user
+    
+    def patch(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        return self.update(request, *args, **kwargs)
 
-class OwnProfileSettingsDeleteView(generics.DestroyAPIView):
+
+class OwnProfileDeleteView(generics.DestroyAPIView):
     queryset = User.objects.all()
     permission_classes = [IsAuthenticated]
     
@@ -38,5 +36,18 @@ class OwnProfileSettingsDeleteView(generics.DestroyAPIView):
         return self.request.user
 
 
+class OwnProfileView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = OwnProfileViewSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_object(self):
+        return self.request.user
 
-#Others Profile View
+
+#Other Profile View
+class OthersProfileView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = OthersProfileViewSerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'id'

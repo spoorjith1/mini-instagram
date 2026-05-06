@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import User
+from posts.serializers import PostsOnProfileSerializer
+
 
 #Own Profile
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -45,6 +47,19 @@ class OwnProfileSerializer(serializers.ModelSerializer):
         if user and User.objects.filter(username__iexact=value).exclude(id=user.id).exists():
             raise serializers.ValidationError("Username already exists")
         return value
-    
+
+
+class OwnProfileViewSerializer(serializers.ModelSerializer):
+    posts = PostsOnProfileSerializer(many=True, read_only=True)
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'profile_pic', 'first_name', 'last_name', 'posts']
+
+
 
 #Others Profile
+class OthersProfileViewSerializer(serializers.ModelSerializer):
+    posts = PostsOnProfileSerializer(many=True, read_only=True)
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'profile_pic', 'first_name', 'last_name', 'posts']

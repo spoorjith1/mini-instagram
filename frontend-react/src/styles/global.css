@@ -1,39 +1,7 @@
 :root {
-    --bg-primary: #222222;
-    --bg-secondary: black;
-
-    --text-primary: #e4e4e4;
+    --text-primary: black;
 }
 
 body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    padding-top: 124px;
-}
-
-html, body {
-  overflow-x: hidden;
-}
-
-.navbar {
-    background-color: var(--bg-secondary);
-}
-
-.search-box {
-    background-color: var(--bg-primary);
-    color: white;
-    border: 1px solid transparent;
-}
-
-.search-box:focus {
-    border: 1px solid #0dcaf0 !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.copy-right {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--text-primary);
-    text-align: center;
+    padding-top: 100px;
 }
