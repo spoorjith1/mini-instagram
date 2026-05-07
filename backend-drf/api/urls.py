@@ -1,7 +1,7 @@
 from django.urls import path
 from accounts.views import RegisterView, OwnProfileView, OwnProfileDeleteView, OwnProfileEditView, OthersProfileView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from posts.views import PostView
+from posts.views import PostCreateView
 
 urlpatterns = [
     #Register
@@ -18,4 +18,7 @@ urlpatterns = [
     
     #Others Profile View
     path('profile/<int:id>/', OthersProfileView.as_view(), name='others_profile'),
+    
+    #Add New Post
+    path('post/create/', PostCreateView.as_view(), name='create_post'),
 ]
