@@ -11,6 +11,8 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import ProfilePage from './pages/ProfilePage';
 import CreatePost from './pages/CreatePost';
+import UsersPage from './pages/UsersPage';
+import OthersProfile from './pages/OthersProfile';
 
 function AppRoutes() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -24,6 +26,8 @@ function AppRoutes() {
       <Route path="/home" element={ <PrivateRoute><Home /></PrivateRoute>} />
       <Route path="/profile" element={ <PrivateRoute><ProfilePage /></PrivateRoute> } />
       <Route path='/create_post' element={ <PrivateRoute><CreatePost /></PrivateRoute> } />
+      <Route path='/users' element={ <PrivateRoute><UsersPage /></PrivateRoute> } />
+      <Route path='/users/:id' element={ <PrivateRoute><OthersProfile /></PrivateRoute> } />
     </Routes>
     <Footer />
     </>
