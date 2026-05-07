@@ -56,6 +56,12 @@ class OwnProfileViewSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'profile_pic', 'first_name', 'last_name', 'posts']
 
 
+#Display Users
+class UsersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'profile_pic', 'first_name', 'last_name']
+
 
 #Others Profile
 class OthersProfileViewSerializer(serializers.ModelSerializer):
