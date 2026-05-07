@@ -38,7 +38,7 @@ function ProfilePage() {
           <div key={post.id}>
             <img src={post.image} alt='post' width='300' />
             <p>{post.caption}</p>
-            <p>{post.created_at}</p>
+            <p>{new Date(post.created_at).toLocaleDateString('en-GB')}</p>
           </div>
         ))}
         </>

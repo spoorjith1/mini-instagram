@@ -7,6 +7,7 @@ function Navbar() {
     <div>
       <Link to='/home'>Home</Link>
       <Link to='/profile'>Profile</Link>
+      <Link to='/create_post'>Post</Link>
     </div>
   )
 }

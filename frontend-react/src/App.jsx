@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
 import ProfilePage from './pages/ProfilePage';
+import CreatePost from './pages/CreatePost';
 
 function AppRoutes() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -18,10 +19,11 @@ function AppRoutes() {
     {isLoggedIn && <Navbar />}
     <Routes>
       <Route path="/" element={isLoggedIn ? <Navigate to="/home" /> : <Navigate to="/login" />} />
-      <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
-      <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+      <Route path="/register" element={ <PublicRoute><Register /></PublicRoute> } />
+      <Route path="/login" element={ <PublicRoute><Login /></PublicRoute>} />
       <Route path="/home" element={ <PrivateRoute><Home /></PrivateRoute>} />
       <Route path="/profile" element={ <PrivateRoute><ProfilePage /></PrivateRoute> } />
+      <Route path='/create_post' element={ <PrivateRoute><CreatePost /></PrivateRoute> } />
     </Routes>
     <Footer />
     </>
