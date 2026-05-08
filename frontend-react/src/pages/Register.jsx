@@ -10,11 +10,18 @@ function Register() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState({})
+  const [generalError, setGeneralError] = useState('')
   const [success, setSuccess] = useState(false)
   const navigate = useNavigate()
 
   const handleRegister = async (e)=> {
     e.preventDefault();
+    if (!email || !username || !password) {
+      setGeneralError('Please fill all fields')
+      setTimeout(() => { setGeneralError('') }, 3000)
+      return
+    }
+
     setLoading(true)
 
     const userData = {email, username, password}
@@ -48,6 +55,7 @@ function Register() {
         <label>password : </label>
         <input type='password' placeholder='password123#$%' value={password} onChange={(e)=> setPassword(e.target.value)} />
         <small>{errors.password && <div className='text-danger'>{errors.password}</div>}</small>
+        {generalError && (<div className='text-danger'>{generalError}</div>)}
         <br />
         {loading ?
         (<button type='submit' disabled>Registering...</button>)

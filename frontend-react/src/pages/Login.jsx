@@ -15,6 +15,17 @@ function Login() {
 
   const handleLogin = async (e)=> {
     e.preventDefault();
+    if (!email) {
+      setError('Please Enter email')
+      setTimeout(()=> {setError('')}, 3000 )
+      return
+    }
+    if (!password) {
+      setError('Please Enter password')
+      setTimeout(()=> {setError('')}, 3000 )
+      return
+    }
+
     setLoading(true)
 
     const userData = {email, password}
@@ -24,10 +35,14 @@ function Login() {
       localStorage.setItem('accessToken', response.data.access)
       localStorage.setItem('refreshToken', response.data.refresh)
       setIsLoggedIn(true)
+      setError('')
       navigate('/home')
     }
     catch (error) {
       setError('InValid email or password')
+      setTimeout(()=> {setError('')}, 3000 )
+      setEmail('')
+      setPassword('')
     }
     finally {
       setLoading(false)
