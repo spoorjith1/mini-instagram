@@ -53,7 +53,7 @@ class OwnProfileViewSerializer(serializers.ModelSerializer):
     posts = PostsOnProfileSerializer(many=True, read_only=True)
     class Meta:
         model = User
-        fields = ['id', 'username', 'profile_pic', 'first_name', 'last_name', 'posts']
+        fields = ['id', 'profile_pic', 'username', 'first_name', 'last_name', 'email', 'mobile_number', 'date_of_birth', 'posts']
 
 
 #Display Users

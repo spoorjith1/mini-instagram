@@ -15,3 +15,11 @@ class PostCreateView(generics.ListCreateAPIView):
     
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+
+class PostDeleteView(generics.DestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Post.objects.all()
+    
+    def get_queryset(self):
+        return Post.objects.filter(user=self.request.user)

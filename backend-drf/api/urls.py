@@ -21,6 +21,8 @@ urlpatterns = [
     
     #Add New Post
     path('post/create/', PostViews.PostCreateView.as_view(), name='create_post'),
+    #Delete Post
+    path('post/delete/<int:pk>/', PostViews.PostDeleteView.as_view(), name='delete_post'),
     
     #Users list
     path('users/', AccountViews.UsersListView.as_view(), name='users_list'),

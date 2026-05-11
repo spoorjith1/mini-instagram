@@ -13,6 +13,8 @@ import ProfilePage from './pages/ProfilePage';
 import CreatePost from './pages/CreatePost';
 import UsersPage from './pages/UsersPage';
 import OthersProfile from './pages/OthersProfile';
+import ProfileEdit from './pages/ProfileEdit';
+import ProfileSettings from './pages/ProfileSettings';
 
 function AppRoutes() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -28,6 +30,8 @@ function AppRoutes() {
       <Route path='/create_post' element={ <PrivateRoute><CreatePost /></PrivateRoute> } />
       <Route path='/users' element={ <PrivateRoute><UsersPage /></PrivateRoute> } />
       <Route path='/users/:id' element={ <PrivateRoute><OthersProfile /></PrivateRoute> } />
+      <Route path='/profile/edit' element={ <PrivateRoute><ProfileEdit /></PrivateRoute> } />
+      <Route path='/profile/settings' element={ <PrivateRoute><ProfileSettings /></PrivateRoute> } />
     </Routes>
     <Footer />
     </>
