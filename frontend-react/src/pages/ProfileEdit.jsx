@@ -83,7 +83,7 @@ function ProfileEdit() {
 
   return (
     <div>
-      <h2>Edit</h2>
+      <h2>Edit Profile</h2>
       {success && <div>{success}</div>}
       {error && <div>{error}</div>}
 
