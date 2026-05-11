@@ -110,9 +110,9 @@ function ProfileEdit() {
           <input type='date' value={dateOfBirth} onChange={(e)=> setDateOfBirth(e.target.value)} />
           <br />
           {loading ? (
-            <button type='submit' disabled className='btn btn-light'>Updating...</button>
+            <button type='submit' disabled className='btn btn-outline-light'>Updating...</button>
           ) : (
-            <button type='submit' className='btn btn-light'>Update Profile</button>
+            <button type='submit' className='btn btn-outline-light'>Update Profile</button>
           )}
         </form>
       </div>
