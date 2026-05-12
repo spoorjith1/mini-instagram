@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .serializers import PostSerializer
+from .serializers import PostSerializer, PostsDisplaySerializer
 from .models import Post
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
@@ -23,3 +23,11 @@ class PostDeleteView(generics.DestroyAPIView):
     
     def get_queryset(self):
         return Post.objects.filter(user=self.request.user)
+
+
+class PostsDisplayView(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = PostsDisplaySerializer
+    
+    def get_queryset(self):
+        return Post.objects.exclude(user=self.request.user).order_by('-created_at')

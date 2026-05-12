@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import User
-from posts.serializers import PostsOnProfileSerializer
+from posts.serializers import PostsDisplaySerializer
 
 
 #Own Profile
@@ -50,7 +50,7 @@ class OwnProfileSerializer(serializers.ModelSerializer):
 
 
 class OwnProfileViewSerializer(serializers.ModelSerializer):
-    posts = PostsOnProfileSerializer(many=True, read_only=True)
+    posts = PostsDisplaySerializer(many=True, read_only=True)
     class Meta:
         model = User
         fields = ['id', 'profile_pic', 'username', 'first_name', 'last_name', 'email', 'mobile_number', 'date_of_birth', 'posts']
@@ -65,7 +65,7 @@ class UsersSerializer(serializers.ModelSerializer):
 
 #Others Profile
 class OthersProfileViewSerializer(serializers.ModelSerializer):
-    posts = PostsOnProfileSerializer(many=True, read_only=True)
+    posts = PostsDisplaySerializer(many=True, read_only=True)
     class Meta:
         model = User
         fields = ['id', 'username', 'profile_pic', 'first_name', 'last_name', 'posts']

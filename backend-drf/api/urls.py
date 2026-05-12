@@ -23,6 +23,8 @@ urlpatterns = [
     path('post/create/', PostViews.PostCreateView.as_view(), name='create_post'),
     #Delete Post
     path('post/delete/<int:pk>/', PostViews.PostDeleteView.as_view(), name='delete_post'),
+    #Display posts
+    path('posts/', PostViews.PostsDisplayView.as_view(), name='display_posts'),
     
     #Users list
     path('users/', AccountViews.UsersListView.as_view(), name='users_list'),

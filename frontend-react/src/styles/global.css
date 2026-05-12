@@ -28,21 +28,26 @@ body {
     color: white;
 }
 
-.users-list {
-    background-color: #f2f2f2;
-    margin: 0.5rem;
-    border-radius: 8px;
+.home-users-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px;
 }
-.users-list:hover {
-    background-color: #a8a8a8;
+
+.users-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #1b1b1b;
+    gap: 20px;
+    padding: 10px;
 }
-.users-list img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px blue;
+
+.user-box {
+    background-color: #2f2f2f;
+    border-radius: 10px;
+    padding: 6px;
 }
-.users-list h3 {
-    display: inline-block;
-    padding-left: 20px;
+.user-box:hover {
+    background-color: #3c3c3c;
 }

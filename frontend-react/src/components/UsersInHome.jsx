@@ -1,8 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-
-function Users({ user }) {
+function UsersInHome({ user }) {
   const navigate = useNavigate()
 
   const openProfile = ()=> {
@@ -10,7 +9,7 @@ function Users({ user }) {
   }
 
   return (
-    <div onClick={openProfile} className='user-box'>
+    <div onClick={openProfile}>
       <img src={user.profile_pic} alt='profile' width='80' />
       <h3>{user.username}</h3>
       <p>{user.first_name}</p>
@@ -19,4 +18,4 @@ function Users({ user }) {
   )
 }
 
-export default Users
+export default UsersInHome

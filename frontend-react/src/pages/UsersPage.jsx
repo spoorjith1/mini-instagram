@@ -33,9 +33,11 @@ function UsersPage() {
       <h2>Users</h2>
       {error && <div>{error}</div>}
 
-      {users.map((user) => (
-        <Users key={user.id} user={user} />
-      ))}
+      <div className='users-container'>
+        {users.map((user) => (
+            <Users key={user.id} user={user} />
+        ))}
+      </div>
     </div>
   )
 }
