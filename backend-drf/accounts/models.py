@@ -8,5 +8,6 @@ class User(AbstractUser):
     mobile_number = models.CharField(max_length=15, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
     
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    is_private = models.BooleanField(default=False)
+    
+    REQUIRED_FIELDS = ['email']
