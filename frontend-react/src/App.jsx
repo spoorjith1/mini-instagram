@@ -21,6 +21,7 @@ function AppRoutes() {
   return (
     <>
     {isLoggedIn && <Navbar />}
+    <main className='main-content'>
     <Routes>
       <Route path="/" element={isLoggedIn ? <Navigate to="/home" /> : <Navigate to="/login" />} />
       <Route path="/register" element={ <PublicRoute><Register /></PublicRoute> } />
@@ -34,6 +35,7 @@ function AppRoutes() {
       <Route path='/profile/settings' element={ <PrivateRoute><ProfileSettings /></PrivateRoute> } />
     </Routes>
     <Footer />
+    </main>
     </>
   );
 }

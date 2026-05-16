@@ -6,7 +6,7 @@ import { AuthContext } from '../AuthProvider'
 import { Link } from 'react-router-dom'
 
 function Login() {
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
@@ -15,8 +15,8 @@ function Login() {
 
   const handleLogin = async (e)=> {
     e.preventDefault();
-    if (!email) {
-      setError('Please Enter email')
+    if (!username) {
+      setError('Please Enter username')
       setTimeout(()=> {setError('')}, 3000 )
       return
     }
@@ -28,7 +28,7 @@ function Login() {
 
     setLoading(true)
 
-    const userData = {email, password}
+    const userData = {username, password}
 
     try {
       const response = await axiosInstance.post('/token/', userData)
@@ -41,7 +41,7 @@ function Login() {
     catch (error) {
       setError('InValid email or password')
       setTimeout(()=> {setError('')}, 3000 )
-      setEmail('')
+      setUsername('')
       setPassword('')
     }
     finally {
@@ -51,23 +51,28 @@ function Login() {
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <label>Email : </label>
-        <input type='email' placeholder='myemail@gmail.com' value={email} onChange={(e)=> setEmail(e.target.value)} />
-        <br />
-        <label>Password : </label>
-        <input type='password' placeholder='password123#$%' value={password} onChange={(e)=> setPassword(e.target.value)} />
-        <br />
-        {error && <div className='text-danger'>{error}</div>}
-        <br />
-        {loading ? 
-        (<button type='submit' disabled>Logging In...</button>) 
-        : 
-        (<button type='submit'>Login</button>)
-        }
-      </form>
-      <div>New to Z Lite? <Link to='/register'>Register</Link></div>
+      <h2 className='title'>Z Lite</h2>
+      <div className='sign-in-up-box'>
+        <h2 className='sign-in-up-h2'>Login</h2>
+        <form onSubmit={handleLogin}>
+          <div className='form-group'>
+            <label>username : </label>
+            <input type='text' placeholder='username' value={username} onChange={(e)=> setUsername(e.target.value)} className='inputs'/>
+          </div>
+          <div className='form-group'>
+            <label>Password : </label>
+            <input type='password' placeholder='password123#$%' value={password} onChange={(e)=> setPassword(e.target.value)}  className='inputs' />
+          </div>
+          {error && <div className='text-danger'>{error}</div>}
+          <br />
+          {loading ? 
+          (<button type='submit' className='btn sign-in-up-btn' disabled>Logging In...</button>) 
+          : 
+          (<button type='submit' className='btn sign-in-up-btn'>Login</button>)
+          }
+        </form>
+        <div className='sign-in-up-alter'>New to Z Lite? <Link to='/register' className='alter-link'>Register</Link></div>
+      </div>
     </div>
   )
 }
