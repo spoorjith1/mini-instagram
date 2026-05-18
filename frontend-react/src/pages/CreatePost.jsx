@@ -8,6 +8,7 @@ function CreatePost() {
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [postPreview, setPostPreview] = useState('')
 
   const handlePost = async (e)=> {
     e.preventDefault();
@@ -33,6 +34,7 @@ function CreatePost() {
 
         setImage(null)
         setCaption('')
+        setPostPreview('')
 
         e.target.reset()
     }
@@ -48,18 +50,31 @@ function CreatePost() {
   }
 
   return (
-    <div>
-      <form onSubmit={handlePost} encType='multipart/form-data'>
-        <input type='file' accept='image/*' onChange={(e)=> setImage(e.target.files[0])} />
-        <textarea value={caption} onChange={(e)=> setCaption(e.target.value)} placeholder='Post caption'></textarea>
-        {loading ? 
-        (<button type='submit' disabled>posting...</button>) 
-        : 
-        (<button type='submit'>post</button>)
-        }
-      </form>
-      <div className=' container-lg bg-light border-3'>{success && <span className=' text-success'>{success}</span>}</div>
-      <div className=' container-lg bg-light border-3'>{error && <span className=' text-danger'>{error}</span>}</div>
+    <div className='create-post-main'>
+      <div className='create-post-box'>
+        <form onSubmit={handlePost} encType='multipart/form-data'>
+        {postPreview && <img src={postPreview} className='create-post-preview' />}
+        <div className='create-inputs'>
+          <div>
+            <input type='file' accept='image/*' className='create-post-file'
+            onChange={(e)=> {
+              setImage(e.target.files[0])
+              setPostPreview(URL.createObjectURL(e.target.files[0]))
+              }} />
+          </div>
+          <div>
+            <textarea value={caption} onChange={(e)=> setCaption(e.target.value)} placeholder='Post caption' className='create-post-textarea'></textarea>
+          </div>
+            {loading ? 
+            (<button type='submit' disabled className='btn btn-post'>posting...</button>) 
+            : 
+            (<button type='submit' className='btn btn-post'>post</button>)
+            }
+        </div>
+        </form>
+        <div>{success && <span className=' text-success'>{success}</span>}</div>
+        <div>{error && <span className=' text-danger'>{error}</span>}</div>
+      </div>
     </div>
   )
 }

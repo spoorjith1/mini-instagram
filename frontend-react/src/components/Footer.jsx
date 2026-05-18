@@ -5,7 +5,7 @@ function Footer() {
     <>
     <footer className='footer py-3 my-3'>
       <hr />
-      <h4 className='copy-right'>Z Lite &copy; 2026</h4>
+      <h4 className='copy-right text-center small'>Z Lite &copy; 2026</h4>
     </footer>
     </>
   )

@@ -1,14 +1,19 @@
 import React from 'react'
 import ProfilePage from '../pages/ProfilePage'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { IoHome, IoPeople } from 'react-icons/io5'
+import { FaUserCircle, FaPlusSquare } from 'react-icons/fa'
 
 function Navbar() {
   return (
-    <div className='side-navbar'>
-      <Link to='/home' className='side-navbar-links'>Home</Link>
-      <Link to='/profile' className='side-navbar-links'>Profile</Link>
-      <Link to='/create_post' className='side-navbar-links'>Post</Link>
-      <Link to='/users' className='side-navbar-links'>Users</Link>
+    <div className='main-navbar'>
+      <h1>Z Lite</h1>
+      <div className='navbar-link-box'>
+        <NavLink to='/home' className={({isActive})=> isActive ? 'nav-icons active' : 'nav-icons'}><IoHome size={23}/></NavLink>
+        <NavLink to='/users' className={({isActive})=> isActive ? 'nav-icons active' : 'nav-icons'}><IoPeople size={23}/></NavLink>
+        <NavLink to='/create_post' className={({isActive})=> isActive ? 'nav-icons active' : 'nav-icons'}><FaPlusSquare size={23}/></NavLink>
+        <NavLink to='/profile' className={({isActive})=> isActive ? 'nav-icons active' : 'nav-icons'}><FaUserCircle size={23}/></NavLink>
+      </div>
     </div>
   )
 }
