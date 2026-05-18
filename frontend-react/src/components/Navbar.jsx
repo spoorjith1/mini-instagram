@@ -7,7 +7,7 @@ import { FaUserCircle, FaPlusSquare } from 'react-icons/fa'
 function Navbar() {
   return (
     <div className='main-navbar'>
-      <h1>Z Lite</h1>
+      <h1 className='z-lite-title'>Z Lite</h1>
       <div className='navbar-link-box'>
         <NavLink to='/home' className={({isActive})=> isActive ? 'nav-icons active' : 'nav-icons'}><IoHome size={23}/></NavLink>
         <NavLink to='/users' className={({isActive})=> isActive ? 'nav-icons active' : 'nav-icons'}><IoPeople size={23}/></NavLink>
