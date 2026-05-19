@@ -2,6 +2,7 @@ from django.urls import path
 from accounts import views as AccountViews
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from posts import views as PostViews
+from friendships import views as FrdViews
 
 urlpatterns = [
     #Register
@@ -31,4 +32,15 @@ urlpatterns = [
     
     #Other Users Profile View
     path('users/<int:id>/', AccountViews.OthersProfileView.as_view(), name='users_profiles'),
+    
+    #Send Frd Request
+    path('friends/request/<int:id>/', FrdViews.FriendRequestView.as_view(), name='friend_request'),
+    #List Pending Requests
+    path('friends/requests/', FrdViews.ListRequestsView.as_view(), name='friend_requests'),
+    #Accept Request
+    path('friends/request/accept/<int:id>/', FrdViews.RequestAcceptView.as_view(), name='accept_request'),
+    #Reject Request
+    path('friends/request/reject/<int:id>/', FrdViews.RequestRejectView.as_view(), name='reject_request'),
+    #List Friends
+    path('friends/', FrdViews.ListFriendsView.as_view(), name='friends_list'),
 ]
