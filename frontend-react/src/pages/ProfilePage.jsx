@@ -42,11 +42,11 @@ function ProfilePage() {
   }
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div className='page-container'>Loading...</div>
   }
 
   return (
-    <div>
+    <div className='page-container'>
       <h2>Profile</h2>
       {error && <div>{error}</div>}
 
@@ -70,6 +70,11 @@ function ProfilePage() {
             <p>{new Date(post.created_at).toLocaleDateString('en-GB')}</p>
           </div>
         ))}
+        {profileData.posts?.length === 0 && (
+          <div className='no-posts-message'>
+            <p>No posts yet, <Link to='/create_post'>Add a post</Link></p>
+          </div>
+          )}
         </>
       )}
     </div>

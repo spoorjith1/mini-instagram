@@ -50,7 +50,7 @@ function Login() {
   }
 
   return (
-    <div>
+    <div className='page-container'>
       <h2 className='title'>Z Lite</h2>
       <div className='sign-in-up-box'>
         <h2 className='sign-in-up-h2'>Login</h2>

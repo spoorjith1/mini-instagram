@@ -25,11 +25,11 @@ function UsersPage() {
     }, [])
 
     if (loading) {
-        return <div>Loading...</div>
+        return <div className='page-container'>Loading...</div>
     }
 
   return (
-    <div>
+    <div className='page-container'>
       <h2>Users</h2>
       {error && <div>{error}</div>}
 

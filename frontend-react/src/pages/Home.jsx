@@ -50,7 +50,7 @@ function Home() {
   }
 
   return (
-    <div>
+    <div className='page-container'>
       <h1>Z Lite</h1>
       <div className='home-users-container'>
         {users.map((user) => (

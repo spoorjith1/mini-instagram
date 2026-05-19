@@ -50,7 +50,7 @@ function CreatePost() {
   }
 
   return (
-    <div className='create-post-main'>
+    <div className='create-post-main page-container'>
       <div className='create-post-box'>
         <form onSubmit={handlePost} encType='multipart/form-data'>
         {postPreview && <img src={postPreview} className='create-post-preview' />}

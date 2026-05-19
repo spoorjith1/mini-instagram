@@ -20,7 +20,7 @@ function OthersProfile() {
     fetchUserData()
   }, [id])
   return (
-    <div>
+    <div className='page-container'>
       {error && <div>{error}</div>}
       <h2>Profile</h2>
       {userData && (

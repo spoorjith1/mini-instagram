@@ -15,6 +15,15 @@
 html, body {
     width: 100%;
     overflow-x: hidden;
+    min-height: 100vh;
+}
+
+html{
+    overflow-y: scroll;
+}
+
+.page-container{
+    min-height: 100vh;
 }
 
 body {
@@ -246,14 +255,15 @@ body {
 }
 
 .nav-icons:hover {
-    color: white;
+    color: var(--accent);
 }
 .nav-icons.active {
-    color: #ecdbfe;
+    color: var(--accent);
 }
 
 .create-post-main {
     padding: 1rem;
+    min-height: 100vh;
 }
 .create-post-box {
     background-color: var(--border);
@@ -302,4 +312,10 @@ body {
 
 .z-lite-title {
     color: var(--accent);
+}
+
+.no-posts-message {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
 }

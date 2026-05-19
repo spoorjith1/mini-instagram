@@ -21,7 +21,7 @@ function ProfileSettings() {
   }
 
   return (
-    <div>
+    <div className='page-container'>
       <h2>Settings</h2>
       <Logout />
       {!showConfirm ? (

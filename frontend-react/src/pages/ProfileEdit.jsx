@@ -82,7 +82,7 @@ function ProfileEdit() {
   }
 
   return (
-    <div>
+    <div className='page-container'>
       <h2>Edit Profile</h2>
       {success && <div>{success}</div>}
       {error && <div>{error}</div>}
