@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import FriendShip
-from .serializers import FriendRequestSerializer, ListRequestsSerializer, ListFriendsSerializer
+from .serializers import FriendRequestSerializer, ListRequestsSerializer, ListFriendsSerializer, FriendShipStatusSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -81,3 +81,22 @@ class ListFriendsView(generics.ListAPIView):
         context = super().get_serializer_context()
         context['request'] = self.request
         return context
+
+
+class FriendShipStatusView(APIView):
+    permission_classes = [IsAuthenticated]
+    def get(self, request, id):
+        try:
+            other_user = User.objects.get(id=id)
+        except User.DoesNotExist:
+            return Response({'errors': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        friendship = FriendShip.objects.filter(
+            Q(sender=request.user, receiver=other_user) | Q(sender=other_user, receiver=request.user)
+            ).first()
+        
+        if not friendship:
+            return Response({'status': None}, status=status.HTTP_200_OK)
+        
+        serializer = FriendShipStatusSerializer(friendship)
+        return Response(serializer.data, status=status.HTTP_200_OK)

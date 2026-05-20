@@ -63,3 +63,9 @@ class ListFriendsSerializer(serializers.ModelSerializer):
         if friend.profile_pic:
             return friend.profile_pic.url
         return None
+
+
+class FriendShipStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FriendShip
+        fields = ['id', 'status']

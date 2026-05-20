@@ -5,6 +5,7 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.filters import SearchFilter
 
 
 
@@ -49,6 +50,10 @@ class OwnProfileView(generics.RetrieveAPIView):
 class UsersListView(generics.ListAPIView):
     serializer_class = AccountSerializers.UsersSerializer
     permission_classes = [IsAuthenticated]
+    queryset = User.objects.all()
+    filter_backends = [SearchFilter]
+    
+    search_fields = ['username', 'first_name', 'last_name']
     
     def get_queryset(self):
         return User.objects.exclude(id=self.request.user.id)
