@@ -15,7 +15,7 @@ function Home() {
         setLoading(true)
         try {
             const response = await axiosInstance.get('/users/')
-            setUsers(response.data)
+            setUsers(response.data.results)
         }
         catch (error) {
             setError("Failed to load users")
@@ -33,7 +33,7 @@ function Home() {
       
       try {
         const res = await axiosInstance.get('/posts/')
-        setPosts(res.data)
+        setPosts(res.data.results)
       }
       catch (error) {
         setError("Failed to load Posts")

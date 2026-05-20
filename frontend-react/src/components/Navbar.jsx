@@ -1,7 +1,8 @@
 import React from 'react'
 import ProfilePage from '../pages/ProfilePage'
 import { NavLink } from 'react-router-dom'
-import { IoHome, IoHomeOutline, IoPeople, IoPeopleOutline } from 'react-icons/io5'
+import { IoHome, IoHomeOutline, IoSearch, IoPeopleOutline, IoSearchOutline } from 'react-icons/io5'
+import { IoNotificationsOutline, IoNotifications } from "react-icons/io5";
 import { FiUser, FiPlusSquare } from 'react-icons/fi'
 import { RiAddBoxFill } from 'react-icons/ri'
 import { FaUserCircle } from 'react-icons/fa'
@@ -20,12 +21,21 @@ function Navbar() {
             )
           }
         </NavLink>
+        <NavLink to='/notifications'>
+          {({ isActive }) =>
+            isActive ? (
+              <IoNotifications size={23} className='nav-icons active' />
+            ) : (
+              <IoNotificationsOutline size={23} className='nav-icons' />
+            )
+          }
+        </NavLink>
         <NavLink to='/users'>
           {({ isActive }) =>
             isActive ? (
-              <IoPeople size={23} className='nav-icons active' />
+              <IoSearch size={23} className='nav-icons active' />
             ) : (
-              <IoPeopleOutline size={23} className='nav-icons' />
+              <IoSearchOutline size={23} className='nav-icons' />
             )
           }
         </NavLink>

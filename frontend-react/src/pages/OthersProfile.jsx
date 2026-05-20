@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axiosInstance from '../axiosInstance'
+import FriendRequest from '../components/FriendRequest'
 
 function OthersProfile() {
   const { id } = useParams()
@@ -27,6 +28,7 @@ function OthersProfile() {
           <h3 className='ms-3'>{userData.username}</h3>
           <img src={userData.profile_pic} alt='profile_pic' width='120' className='profile-pic ms-3' />
           <p className='full-name ms-3'>{userData.first_name} {userData.last_name}</p>
+          <FriendRequest userId={userData.id} />
           <hr />
           {userData.posts?.map((post) => (
           <div key={post.id} className='single-post-container'>
