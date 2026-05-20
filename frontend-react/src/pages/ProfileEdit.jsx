@@ -82,14 +82,14 @@ function ProfileEdit() {
   }
 
   return (
-    <div className='page-container'>
+    <div className='page-container edit-page'>
       <h2>Edit Profile</h2>
       {success && <div>{success}</div>}
       {error && <div>{error}</div>}
 
-      <div>
+      <div className='edit-form-contianer'>
         <form onSubmit={UpdateData}>
-          {profilePicPreview && (<img src={profilePicPreview} width='120' />)}
+          {profilePicPreview && (<img src={profilePicPreview} width='120' className='profile-pic' />)}
           <input type='file' accept='image/*' 
           onChange={(e)=> {
             setProfilePic(e.target.files[0])
@@ -97,22 +97,28 @@ function ProfileEdit() {
           }}
           />
           <br />
-          <input type='text' value={username} onChange={(e)=> setUsername(e.target.value)} placeholder='username' />
+          <label className='edit-form-label'>Username</label><br />
+          <input type='text' value={username} onChange={(e)=> setUsername(e.target.value)} className='edit-inputs' />
           <br />
-          <input type='text' value={firstName} onChange={(e)=> setFirstName(e.target.value)} placeholder='first name' />
+          <label className='edit-form-label'>First Name</label><br />
+          <input type='text' value={firstName} onChange={(e)=> setFirstName(e.target.value)} className='edit-inputs' />
           <br />
-          <input type='text' value={lastName} onChange={(e)=> setLastName(e.target.value)} placeholder='last name' />
+          <label className='edit-form-label'>Last Name</label><br />
+          <input type='text' value={lastName} onChange={(e)=> setLastName(e.target.value)} className='edit-inputs' />
           <br />
-          <input type='email' value={email} onChange={(e)=> setEmail(e.target.value)} placeholder='email' />
+          <label className='edit-form-label'>Email</label><br />
+          <input type='email' value={email} onChange={(e)=> setEmail(e.target.value)} className='edit-inputs' />
           <br />
-          <input type='text' value={mobileNumber} onChange={(e)=> setMobileNumber(e.target.value)} placeholder='mobile number' />
+          <label className='edit-form-label'>Mobile Number</label><br />
+          <input type='text' value={mobileNumber} onChange={(e)=> setMobileNumber(e.target.value)} className='edit-inputs' />
           <br />
+          <label className='edit-form-label'>Date Of Birth</label><br />
           <input type='date' value={dateOfBirth} onChange={(e)=> setDateOfBirth(e.target.value)} />
           <br />
           {loading ? (
-            <button type='submit' disabled className='btn btn-outline-light'>Updating...</button>
+            <button type='submit' disabled className='edit-btn'>Updating...</button>
           ) : (
-            <button type='submit' className='btn btn-outline-light'>Update Profile</button>
+            <button type='submit' className='edit-btn'>Update Profile</button>
           )}
         </form>
       </div>

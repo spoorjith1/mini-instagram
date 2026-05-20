@@ -319,3 +319,175 @@ body {
     justify-content: center;
     margin-top: 3rem;
 }
+
+.logout {
+    border: none;
+    background: none;
+    color: white;
+    padding: 6px;
+    width: 100%;
+    text-align: left;
+    height: 60px;
+    background-color: var(--bg);
+}
+.logout:hover {
+    background-color: var(--border);
+}
+
+.delete-acc {
+    border: none;
+    background: none;
+    color: #f53434;
+    padding: 6px;
+    width: 100%;
+    text-align: left;
+    height: 60px;
+    background-color: var(--bg);
+}
+.delete-acc:hover {
+    background-color: #f53434;
+    color: var(--text)
+}
+
+.delete-acc-confirm {
+    background-color: #f5343438;
+    border: 1px solid #f53434;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    padding: 7px;
+}
+.delete-acc-confirm p {
+    margin-bottom: 6px;
+}
+.confirmation {
+    background: none;
+    margin-right: 10px;
+    border: none;
+    width: 50px;
+    padding: 3px;
+    border-radius: 4px;
+}
+.no {
+    background-color: #bcfff9;
+}
+.yes {
+    background-color: #f53434;
+}
+
+
+.edit-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding-bottom: 4px;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    color: black;
+    background-color: var(--accent);
+}
+.edit-btn:hover {
+    background-color: var(--text);
+    color: black;
+    box-shadow: none;
+}
+
+.edit-inputs {
+    background: none;
+    border: none;
+    width: 80%;
+    color: var(--text);
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+.edit-inputs.active {
+    border: none;
+    border-bottom: 1px solid white;
+}
+.edit-form-label {
+    color: black;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.full-name {
+    margin-top: 10px;
+    color: var(--text);
+}
+
+.profile-configs {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.conf-btns {
+    width: 40%;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    color: var(--text-h);
+    padding: 5px;
+}
+
+.single-post-container {
+    margin-top: 25px;
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-posts {
+    width: 100%;
+    object-fit: cover;
+}
+
+.post-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.post-caption {
+    color: var(--text);
+    margin: 0;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.post-date {
+    color: gray;
+    font-size: 14px;
+    margin: 0;
+}
+
+.three-dots {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 18px;
+}
+
+.delete-btn {
+    width: fit-content;
+}
+
+.no-posts-message {
+    margin-top: 40px;
+    text-align: center;
+}

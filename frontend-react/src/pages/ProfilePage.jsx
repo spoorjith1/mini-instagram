@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axiosInstance from '../axiosInstance'
 import { Link } from 'react-router-dom'
+import { FaEdit, FaEllipsisV } from 'react-icons/fa'
+import { IoMdSettings } from 'react-icons/io'
 
 function ProfilePage() {
   const [loading, setLoading] = useState(false)
@@ -47,27 +49,31 @@ function ProfilePage() {
 
   return (
     <div className='page-container'>
-      <h2>Profile</h2>
       {error && <div>{error}</div>}
 
       {profileData && (
         <>
-        <img src={profileData.profile_pic} alt='profile_pic' width='120' />
-        <h3>{profileData.username}</h3>
-        <p>{profileData.first_name}</p>
-        <p>{profileData.last_name}</p>
-        <Link to='/profile/edit' className=' btn btn-info'>Edit Profile</Link>
-        <Link to='/profile/settings' className=' btn btn-danger'>Settings</Link>
+        <h3 className='ms-3'>{profileData.username}</h3>
+        <img src={profileData.profile_pic} alt='profile_pic' width='120' className='profile-pic ms-3' />
+        <p className='full-name ms-3'>{profileData.first_name} {profileData.last_name}</p>
+        <div className='profile-configs'>
+          <Link to='/profile/edit' className='conf-btns'>Edit Profile <FaEdit /></Link>
+          <Link to='/profile/settings' className='conf-btns'>Settings<IoMdSettings /></Link>
+        </div>
 
         {profileData.posts?.map((post) => (
-          <div key={post.id}>
-            <button onClick={()=> setPostMenu(postMenu === post.id? null : post.id)}>⋮</button>
-            {postMenu === post.id && <div>
-            <button className='btn btn-dark' onClick={() => deletePost(post.id)}>Delete</button>
-            </div>}
-            <img src={post.image} alt='post' width='300' />
-            <p>{post.caption}</p>
-            <p>{new Date(post.created_at).toLocaleDateString('en-GB')}</p>
+          <div key={post.id} className='single-post-container'>
+            <img src={post.image} alt='post' width='300' className='profile-posts' />
+            <div className='post-content'>
+              <div className='post-top'>
+                <p className='post-caption'><b>@{post.username} </b>{post.caption}<br /></p>
+                <button onClick={()=> setPostMenu(postMenu === post.id? null : post.id)} className='three-dots'><FaEllipsisV /></button>
+              </div>
+              <p className='post-date'>{new Date(post.created_at).toLocaleDateString('en-GB')}</p>
+              {postMenu === post.id && 
+                <button className='delete-btn btn btn-light' onClick={() => deletePost(post.id)}>Delete</button>
+              }
+            </div>
           </div>
         ))}
         {profileData.posts?.length === 0 && (

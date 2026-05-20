@@ -23,14 +23,16 @@ function ProfileSettings() {
   return (
     <div className='page-container'>
       <h2>Settings</h2>
+      <hr />
       <Logout />
+      <br />
       {!showConfirm ? (
-        <button onClick={()=> setShowConfirm(true)} className='btn btn-outline-danger'>Delete Account</button>
+        <button onClick={()=> setShowConfirm(true)} className='delete-acc'>Delete Account</button>
       ) : (
-        <div>
+        <div className='delete-acc-confirm'>
           <p>Are you sure you want to Delete your Account?</p>
-          <button onClick={()=> navigate('/profile')} className='btn btn-info'>No</button>
-          <button onClick={handleDelete} className='btn btn-danger'>Yes</button>
+          <button onClick={()=> navigate('/profile')} className='confirmation no'>No</button>
+          <button onClick={handleDelete} className='confirmation yes'>Yes</button>
         </div>
       )}
     </div>

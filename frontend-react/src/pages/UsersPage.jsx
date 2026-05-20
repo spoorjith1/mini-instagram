@@ -30,7 +30,7 @@ function UsersPage() {
 
   return (
     <div className='page-container'>
-      <h2>Users</h2>
+      <h2 className='users-title'>Users</h2>
       {error && <div>{error}</div>}
 
       <div className='users-container'>
