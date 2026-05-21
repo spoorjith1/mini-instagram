@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import User
 from posts.serializers import PostsDisplaySerializer
+from django.db.models import Q
+from friendships.models import FriendShip
 
 
 #Own Profile
@@ -51,9 +53,13 @@ class OwnProfileSerializer(serializers.ModelSerializer):
 
 class OwnProfileViewSerializer(serializers.ModelSerializer):
     posts = PostsDisplaySerializer(many=True, read_only=True)
+    friends_count = serializers.SerializerMethodField()
     class Meta:
         model = User
-        fields = ['id', 'profile_pic', 'username', 'first_name', 'last_name', 'email', 'mobile_number', 'date_of_birth', 'posts']
+        fields = ['id', 'profile_pic', 'username', 'first_name', 'last_name', 'email', 'mobile_number', 'date_of_birth', 'posts', 'friends_count']
+
+    def get_friends_count(self, obj):
+        return FriendShip.objects.filter(Q(sender=obj) | Q(receiver=obj), status=FriendShip.Status.ACCEPTED).count()
 
 
 #Display Users
@@ -63,9 +69,13 @@ class UsersSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'profile_pic', 'first_name', 'last_name']
 
 
-#Others Profile
+#Others Profile View
 class OthersProfileViewSerializer(serializers.ModelSerializer):
     posts = PostsDisplaySerializer(many=True, read_only=True)
+    friends_count = serializers.SerializerMethodField()
     class Meta:
         model = User
-        fields = ['id', 'username', 'profile_pic', 'first_name', 'last_name', 'posts']
+        fields = ['id', 'username', 'profile_pic', 'first_name', 'last_name', 'posts', 'friends_count']
+
+    def get_friends_count(self, obj):
+        return FriendShip.objects.filter(Q(sender=obj) | Q(receiver=obj), status=FriendShip.Status.ACCEPTED).count()

@@ -9,21 +9,30 @@ class FriendRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = FriendShip
         fields = ['id', 'user_id', 'username', 'profile_pic', 'status', 'created_at']
-    
+
     def validate(self, data):
         request = self.context.get('request')
         sender = request.user
         receiver = self.context.get('receiver')
-        
+
         if sender == receiver:
             raise serializers.ValidationError("You cannot send request to yourself")
-        
-        if FriendShip.objects.filter(sender=sender, receiver=receiver).exists():
-            raise serializers.ValidationError("Request Already sent")
-        
-        if FriendShip.objects.filter(sender=receiver, receiver=sender).exists():
+
+        existing_request = FriendShip.objects.filter(sender=sender, receiver=receiver).first()
+
+        if existing_request:
+            if existing_request.status == FriendShip.Status.PENDING:
+                raise serializers.ValidationError("Request already sent")
+
+            if existing_request.status == FriendShip.Status.ACCEPTED:
+                raise serializers.ValidationError("Already friends")
+
+            if existing_request.status == FriendShip.Status.REJECTED:
+                existing_request.delete()
+
+        reverse_request = FriendShip.objects.filter(sender=receiver, receiver=sender, status=FriendShip.Status.PENDING).first()
+        if reverse_request:
             raise serializers.ValidationError("This user already sent you request")
-        
         return data
     
 
