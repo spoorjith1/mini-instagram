@@ -54,7 +54,13 @@ function ProfilePage() {
       {profileData && (
         <>
         <h3 className='ms-3'>{profileData.username}</h3>
-        <img src={profileData.profile_pic} alt='profile_pic' width='120' className='profile-pic ms-3' />
+        <div className='profile-top'>
+          <img src={profileData.profile_pic} alt='profile_pic' width='120' className='profile-pic'/>
+          <Link to='/friends' className='friends-count-box'>
+            <p className='friends-count-number'>{profileData.friends_count}</p>
+            <p className='friends-count-text'>Friends</p>
+          </Link>
+        </div>
         <p className='full-name ms-3'>{profileData.first_name} {profileData.last_name}</p>
         <div className='profile-configs'>
           <Link to='/profile/edit' className='conf-btns'>Edit Profile <FaEdit /></Link>

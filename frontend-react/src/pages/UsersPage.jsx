@@ -13,10 +13,10 @@ function UsersPage() {
     try {
       setError('')
         const response = await axiosInstance.get(url)
-        setUsers((prevUsers) => [
-            ...prevUsers,
-            ...response.data.results
-        ])
+        setUsers((prevUsers) => {
+          const newUsers = response.data.results.filter((newUser) => !prevUsers.some((prevUser) => prevUser.id === newUser.id))
+          return [...prevUsers, ...newUsers]
+        })
         setNextPage(response.data.next)
     }
     catch (error) {

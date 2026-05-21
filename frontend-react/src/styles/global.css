@@ -570,10 +570,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: var(--border);
     padding: 15px;
     border-radius: 12px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--bg);
 }
 
 .user-left {
@@ -642,4 +642,210 @@ body {
     background-color: black;
     color: white;
     cursor: pointer;
+}
+
+.notifications-page {
+    width: 100%;
+    max-width: 400px;
+    margin: 90px auto 0;
+    padding: 12px;
+}
+
+.notifications-title {
+    font-size: 2rem;
+    color: var(--text-h);
+    margin-bottom: 20px;
+}
+
+.notifications-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.notification-box {
+    width: 100%;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.notification-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.notification-profile-pic {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background-color: var(--border);
+}
+
+.notification-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-username {
+    margin: 0;
+    font-size: 17px;
+    color: var(--text-h);
+    font-weight: 600;
+}
+
+.notification-text {
+    margin: 0;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.notification-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.notification-btn {
+    flex: 1;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 0;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.accept-btn {
+    background-color: var(--accent);
+    color: var(--bg);
+}
+
+.accept-btn:hover {
+    background-color: #d2a2fd;
+}
+
+.reject-btn {
+    background-color: transparent;
+    border: 1px solid #f43f5e;
+    color: #f43f5e;
+}
+
+.reject-btn:hover {
+    background-color: rgba(244, 63, 94, 0.12);
+}
+
+.notification-friends-btn {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 9px;
+    background-color: rgba(192, 132, 252, 0.15);
+    border: 1px solid rgba(192, 132, 252, 0.35);
+    color: var(--accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: default;
+}
+
+.notifications-empty {
+    margin-top: 50px;
+    text-align: center;
+    color: gray;
+}
+
+.profile-top {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-left: 16px;
+    margin-top: 12px;
+}
+
+
+.friends-count-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 30%;
+}
+.friends-count-box:hover {
+    background-color: var(--border);
+}
+
+.friends-count-number {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-h);
+}
+
+
+.friends-count-text {
+    margin: 0;
+    color: var(--text);
+    font-size: 15px;
+}
+
+.friends-count-box {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.friends-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.friend-box {
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.friend-box:hover {
+    background-color: var(--border);
+}
+
+.friend-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.friend-profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.friend-username {
+    margin: 0;
+    font-size: 18px;
+    color: var(--text-h);
+}
+
+.friends-title {
+    color: var(--text-h);
+}
+
+.friends-empty {
+    text-align: center;
+    margin-top: 40px;
+    color: gray;
 }
