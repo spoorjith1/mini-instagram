@@ -849,3 +849,127 @@ body {
     margin-top: 40px;
     color: gray;
 }
+
+
+
+.home-users-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.home-users-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    flex: 1;
+}
+
+.home-users-container::-webkit-scrollbar {
+    display: none;
+}
+
+.users-slide-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--bg);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: 0.2s;
+}
+
+.users-slide-btn:hover {
+    background-color: var(--border);
+}
+
+.home-user-card {
+    min-width: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.home-user-pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+}
+
+.home-user-name {
+    margin-top: 6px;
+    margin-bottom: 0;
+    color: var(--text);
+    font-size: 14px;
+    text-align: center;
+    max-width: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.home-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.home-post-card {
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.home-post-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.home-post-profile-pic {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.home-post-username {
+    margin: 0;
+    color: var(--text-h);
+    font-weight: 600;
+}
+
+.home-post-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.home-post-caption {
+    padding: 12px 12px 4px;
+    margin: 0;
+    color: var(--text);
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.home-post-date {
+    padding: 0 12px 12px;
+    margin: 0;
+    color: gray;
+    font-size: 13px;
+}
