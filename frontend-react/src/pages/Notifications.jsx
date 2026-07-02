@@ -11,9 +11,7 @@ function Notifications() {
     const fetchRequests = async () => {
       setLoading(true)
       try {
-        const response = await axiosInstance.get(
-          '/friends/requests/'
-        )
+        const response = await axiosInstance.get('/friends/requests/')
         setRequests(response.data.results)
       }
       catch (error) {
