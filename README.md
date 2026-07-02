@@ -1,5 +1,5 @@
 # Mini Instagram (Z-Lite)
-Z-Lite is social media application inspired by instagram built using REST APIs with Django REST Framework.
+Z-Lite is social media application inspired by instagram. Built using REST APIs with Django REST Framework.
 
 The application allows logged in users,  
 A user can post photos which will be shared across the site. users across the site can view the photos.  
