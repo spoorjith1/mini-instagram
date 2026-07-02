@@ -15,6 +15,13 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = AccountSerializers.UserRegistrationSerializer
     permission_classes = [AllowAny]
 
+class OwnProfileView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = AccountSerializers.OwnProfileViewSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_object(self):
+        return self.request.user
 
 class OwnProfileEditView(generics.UpdateAPIView):
     queryset = User.objects.all()
@@ -35,16 +42,6 @@ class OwnProfileDeleteView(generics.DestroyAPIView):
     
     def get_object(self):
         return self.request.user
-
-
-class OwnProfileView(generics.RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = AccountSerializers.OwnProfileViewSerializer
-    permission_classes = [IsAuthenticated]
-    
-    def get_object(self):
-        return self.request.user
-
 
 #Users List
 class UsersListView(generics.ListAPIView):

@@ -43,6 +43,6 @@ urlpatterns = [
     path('friends/request/reject/<int:id>/', FrdViews.RequestRejectView.as_view(), name='reject_request'),
     #List Friends
     path('friends/list/', FrdViews.ListFriendsView.as_view(), name='friends_list'),
-    
+    #FriendShip Status
     path('friends/status/<int:id>/', FrdViews.FriendShipStatusView.as_view(), name='friendship_status'),
 ]
